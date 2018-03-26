@@ -71,7 +71,7 @@
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
                                         @role('Administrator') {{-- Laravel-permission blade helper --}}
-                                            <a href="{{ route('users.index') }}"><i class="fa fa-btn fa-unlock"></i>Admin</a>
+                                            <a href="{{ route('users.index') }}"><i class="fa fa-btn fa-unlock"></i>Administrator</a>
                                         @endrole
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
