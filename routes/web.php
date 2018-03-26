@@ -26,3 +26,15 @@ Route::resource('roles', 'RoleController');
 Route::resource('permissions', 'PermissionController');
 
 Route::resource('posts', 'PostController');
+
+Route::get('admin', function() {
+	return view('layouts.dashboard')->with('page_title', 'Database Summary');
+});
+
+Route::get('start', function() {
+	return view('inicio');
+});
+
+Route::get('registro', function() {
+	return view('register');
+});
