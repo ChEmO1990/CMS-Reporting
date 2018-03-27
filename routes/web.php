@@ -35,6 +35,6 @@ Route::get('start', function() {
 	return view('inicio');
 });
 
-Route::get('registro', function() {
-	return view('register');
+Route::get('reg', function() {
+	return view('registers');
 });

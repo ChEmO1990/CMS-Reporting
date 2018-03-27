@@ -41,13 +41,13 @@
     <!-- /.login-logo -->
     <div class="login-box-body">
       <p class="login-box-msg">Please enter your information below</p>
+
       <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
         {{ csrf_field() }}
 
         <div class="form-group has-feedback{{ $errors->has('name') ? ' has-error' : '' }}">
-          <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
-          <span class="glyphicon glyphicon-user form-control-feedback"></span>
-
+          <input id="name" type="text" class="form-control" name="name" placeholder="Name" value="{{ old('name') }}" required autofocus>
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           @if ($errors->has('name'))
           <span class="help-block">
             <strong>{{ $errors->first('name') }}</strong>
@@ -55,54 +55,46 @@
           @endif
         </div>
 
-        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-          <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-          <div class="col-md-6">
-            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-            @if ($errors->has('email'))
-            <span class="help-block">
-              <strong>{{ $errors->first('email') }}</strong>
-            </span>
-            @endif
-          </div>
+        <div class="form-group has-feedback{{ $errors->has('email') ? ' has-error' : '' }}">
+          <input id="email" type="email" class="form-control" name="email" placeholder="Email" value="{{ old('email') }}" required autofocus>
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+          @if ($errors->has('email'))
+          <span class="help-block">
+            <strong>{{ $errors->first('email') }}</strong>
+          </span>
+          @endif
         </div>
 
-        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-          <label for="password" class="col-md-4 control-label">Password</label>
-
-          <div class="col-md-6">
-            <input id="password" type="password" class="form-control" name="password" required>
-
-            @if ($errors->has('password'))
-            <span class="help-block">
-              <strong>{{ $errors->first('password') }}</strong>
-            </span>
-            @endif
-          </div>
+        <div class="form-group has-feedback{{ $errors->has('password') ? ' has-error' : '' }}">
+          <input id="password" type="password" class="form-control" placeholder="Password" name="password" required>
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+          @if ($errors->has('password'))
+          <span class="help-block">
+            <strong>{{ $errors->first('password') }}</strong>
+          </span>
+          @endif
         </div>
 
-        <div class="form-group">
-          <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-
-          <div class="col-md-6">
-            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-          </div>
+        <div class="form-group has-feedback{{ $errors->has('password') ? ' has-error' : '' }}">
+          <input id="password-confirm" type="password" class="form-control" placeholder="Confirm Password" name="password_confirmation" required>
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
 
-        <div class="row">
-          <!-- /.col -->
-          <div class="panel-body">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
-          </div>
-          <!-- /.col -->
+        <div class="form-group has-feedback">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
         </div>
+
+        <div class="form-group has-feedback">
+          <button type="button" class="btn btn-danger btn-block btn-flat" onclick="window.location='{{ url("start") }}'">Cancel</button>
+        </div>
+        <!-- /.col -->
 
       </form>
     </div>
     <!-- /.login-box-body -->
   </div>
+  <!-- /.login-box -->
+
   <!-- jQuery 3 -->
   <script src="/adminlte/bower_components/jquery/dist/jquery.min.js"></script>
   <!-- Bootstrap 3.3.7 -->
