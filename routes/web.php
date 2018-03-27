@@ -11,30 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/', 'PostController@index')->name('home');
+Route::resource('/', 'Dashboard\DashboardController');
 
-Route::resource('users', 'UserController');
+Route::resource('users', 'Users\UserController');
 
-Route::resource('roles', 'RoleController');
+Route::resource('roles', 'Roles\RoleController');
 
-Route::resource('permissions', 'PermissionController');
+Route::resource('permissions', 'Permissions\PermissionController');
 
 Route::resource('posts', 'PostController');
-
-Route::get('admin', function() {
-	return view('layouts.dashboard')->with('page_title', 'Database Summary');
-});
-
-Route::get('start', function() {
-	return view('inicio');
-});
-
-Route::get('reg', function() {
-	return view('registers');
-});

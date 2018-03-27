@@ -9,11 +9,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="shortcut icon" href="/favicon.png.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/adminlte/img/community_small_logo.png.ico" type="image/x-icon">
 
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <title>{{ config('app.name', 'CommunityTax') }}</title>
+  <title>{{ config('app.name', 'Reporting') }}</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   
@@ -39,7 +39,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-
         <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
@@ -82,7 +81,6 @@ desired effect
         <section class="content-header">
             <h1>
                 {{ $page_title }}
-                <small>{{ $page_description or null }}</small>
             </h1>
             <!-- You can dynamically generate breadcrumbs here -->
         </section>

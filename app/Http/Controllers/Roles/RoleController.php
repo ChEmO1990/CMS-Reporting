@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
+namespace App\Http\Controllers\Roles;
 
 use Auth;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 use Session;
+use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
+use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
@@ -25,7 +25,9 @@ class RoleController extends Controller
     {
         $roles = Role::all();
 
-        return view('roles.index')->with('roles', $roles);
+        return view('roles.index')
+        ->with('roles', $roles)
+        ->with('page_title', 'Roles');
     }
 
     /**

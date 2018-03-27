@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Users;
 
-use Illuminate\Http\Request;
-
-use App\User;
 use Auth;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 use Session;
+use App\User;
+use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use App\Http\Controllers\Controller;
+use Spatie\Permission\Models\Permission;
 
 class UserController extends Controller
 {
@@ -26,7 +26,9 @@ class UserController extends Controller
     {
         $users = User::all();
 
-        return view('users.index')->with('users', $users);
+        return view('users.index')
+        ->with('users', $users)
+        ->with('page_title', 'Users');
     }
 
     /**
@@ -37,7 +39,7 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::get();
-        return view('users.create', ['roles'=>$roles]);
+        return view('users.create', ['roles'=>$roles])->with('page_title', 'Create User');;
     }
 
     /**
@@ -93,7 +95,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $roles = Role::get();
 
-        return view('users.edit', compact('user', 'roles'));
+        return view('users.edit', compact('user', 'roles'))->with('page_title', 'Edit User');;
     }
 
     /**
@@ -139,7 +141,7 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route('users.index')
-            ->with('flash_message',
-             'User successfully deleted.');
+            ->with('flash_message','User successfully deleted.')
+            ->with('page_title', 'Users');
     }
 }

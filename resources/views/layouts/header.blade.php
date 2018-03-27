@@ -6,7 +6,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"> <img src="/adminlte/img/community_small_logo.png">  </span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>CommunityTax</b> CMS</span>
+      <span class="logo-lg"><b>Reporting</b> CMS</span>
     </a>
 
     <!-- Header Navbar -->
