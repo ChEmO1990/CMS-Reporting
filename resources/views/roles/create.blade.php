@@ -2,6 +2,10 @@
 
 @section('content')
 <div class="box box-primary">
+    <ol class="breadcrumb">
+        <li><a href="{{ route('roles.index') }}">Roles</a></li>
+        <li class="active">Create Role</li>
+    </ol>
     <div class="box-body">
         @if ($errors->any())
         <div class="alert alert-danger">

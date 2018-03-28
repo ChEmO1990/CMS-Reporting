@@ -4,6 +4,10 @@
 @include('layouts.modal')
 
 <div class="box box-primary">
+  <ol class="breadcrumb">
+        <li><a href="{{ route('roles.index') }}">Roles</a></li>
+        <li class="active">Edit Role</li>
+    </ol> F
   <div class="box-body">
     @if ($errors->any())
     <div class="alert alert-danger">
