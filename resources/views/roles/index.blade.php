@@ -30,11 +30,15 @@
 
                 <td>{{  $role->permissions()->pluck('name')->implode(' ') }}</td>{{-- Retrieve array of permissions associated to a role and convert to string --}}
                 <td>
-                    <a href="{{ URL::to('roles/'.$role->id.'/edit') }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
-
-                    {!! Form::open(['method' => 'DELETE', 'route' => ['roles.destroy', $role->id] ]) !!}
-                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                    {!! Form::model($role, ['method' => 'DELETE', 'route' => ['roles.destroy', $role->id], 'class' =>'pull-left form-delete']) !!}
+                    {!! Form::hidden('id', $role->id) !!}
+                    {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs'] )  !!}
                     {!! Form::close() !!}
+
+                    &nbsp;
+                    <a href="{{ route('roles.edit',['id' => $role->id]) }}">
+                        <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                    </a>
 
                 </td>
             </tr>

@@ -1,32 +1,39 @@
 @extends('layouts.dashboard')
 
-@section('title', '| Edit Role')
-
 @section('content')
+@include('layouts.modal')
 
-<div class='col-lg-4 col-lg-offset-4'>
-    <h1><i class='fa fa-key'></i> Edit Role: {{$role->name}}</h1>
-    <hr>
-    {{-- @include ('errors.list')
- --}}
-    {{ Form::model($role, array('route' => array('roles.update', $role->id), 'method' => 'PUT')) }}
-
-    <div class="form-group">
-        {{ Form::label('name', 'Role Name') }}
-        {{ Form::text('name', null, array('class' => 'form-control')) }}
+<div class="box box-primary">
+  <div class="box-body">
+    @if ($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+      </ul>
     </div>
+    @endif
+    <div class="box-body">
+      {{ Form::model($role, array('route' => array('roles.update', $role->id), 'method' => 'PUT')) }}
 
-    <h5><b>Assign Permissions</b></h5>
-    @foreach ($permissions as $permission)
+      <div class="form-group has-feedback">
+        <input name="name" type="text" class="form-control" placeholder="Permission Name" value="{{ $role->name }}">
+        <span class="glyphicon glyphicon-cog form-control-feedback"></span>
+      </div>
 
-        {{Form::checkbox('permissions[]',  $permission->id, $role->permissions ) }}
-        {{Form::label($permission->name, ucfirst($permission->name)) }}<br>
+      <h4>Assign Permissions</h4>
+      @foreach ($permissions as $permission)
 
-    @endforeach
-    <br>
-    {{ Form::submit('Edit', array('class' => 'btn btn-primary')) }}
+      {{Form::checkbox('permissions[]',  $permission->id, $role->permissions ) }}
+      {{Form::label($permission->name, ucfirst($permission->name)) }}<br>
 
-    {{ Form::close() }}    
+      @endforeach
+      <br>
+      {{ Form::submit('Edit', array('class' => 'btn btn-primary pull-right')) }}
+
+      {{ Form::close() }}
+    </div>
+  </div>
 </div>
-
 @endsection

@@ -46,7 +46,7 @@
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
     </div>
 
-    {{ Form::submit('Edit User', array('class' => 'btn btn-primary pull-right')) }}
+    {{ Form::submit('Edit', array('class' => 'btn btn-primary pull-right')) }}
     {{ Form::close() }}
 </div>
 </div>

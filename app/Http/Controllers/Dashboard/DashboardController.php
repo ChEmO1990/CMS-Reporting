@@ -24,6 +24,6 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard.index')->with('page_title', 'Profile Summary');
+        return view('dashboard.index')->with('page_title', 'Dashboard');
     }
 }
