@@ -39,7 +39,7 @@ class RoleController extends Controller
     {
         $permissions = Permission::all();
 
-        return view('roles.create', ['permissions'=>$permissions]);
+        return view('roles.create', ['permissions'=>$permissions])->with('page_title', 'Create Role');
     }
 
     /**
@@ -71,8 +71,8 @@ class RoleController extends Controller
         }
 
         return redirect()->route('roles.index')
-            ->with('flash_message',
-             'Role'. $role->name.' added!');
+            ->with('flash_message','Role'. $role->name.' added!')
+            ->with('page_title', 'Roles');
     }
 
     /**
@@ -97,7 +97,7 @@ class RoleController extends Controller
         $role = Role::findOrFail($id);
         $permissions = Permission::all();
 
-        return view('roles.edit', compact('role', 'permissions'));
+        return view('roles.edit', compact('role', 'permissions'))->with('page_title', 'Edit Role');
     }
 
     /**
@@ -130,8 +130,8 @@ class RoleController extends Controller
         }
 
         return redirect()->route('roles.index')
-            ->with('flash_message',
-             'Role'. $role->name.' updated!');
+            ->with('flash_message','Role'. $role->name.' updated!')
+            ->with('page_title', 'Roles');
     }
 
     /**
@@ -146,7 +146,7 @@ class RoleController extends Controller
         $role->delete();
 
         return redirect()->route('roles.index')
-            ->with('flash_message',
-             'Role deleted!');
+            ->with('flash_message','Role deleted!')
+            ->with('page_title', 'Roles');
     }
 }

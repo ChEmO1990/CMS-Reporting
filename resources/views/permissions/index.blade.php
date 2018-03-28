@@ -1,44 +1,41 @@
 @extends('layouts.dashboard')
-
-@section('title', '| Permissions')
-
 @section('content')
+@include('layouts.modal')
 
-<div class="col-lg-10 col-lg-offset-1">
-    <h1><i class="fa fa-key"></i>Available Permissions
-
-    <a href="{{ route('users.index') }}" class="btn btn-default pull-right">Users</a>
-    <a href="{{ route('roles.index') }}" class="btn btn-default pull-right">Roles</a></h1>
-    <hr>
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped">
-
-            <thead>
-                <tr>
-                    <th>Permissions</th>
-                    <th>Operation</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($permissions as $permission)
-                <tr>
-                    <td>{{ $permission->name }}</td> 
-                    <td>
-                    <a href="{{ URL::to('permissions/'.$permission->id.'/edit') }}" class="btn btn-info pull-left" style="margin-right: 3px;">Edit</a>
-
-                    {!! Form::open(['method' => 'DELETE', 'route' => ['permissions.destroy', $permission->id] ]) !!}
-                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                    {!! Form::close() !!}
-
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+<div class="box box-primary">
+    <div class="box-body">
+        <div class="box-body">
+            <div div class="col-xs-12>
+                <a href="url">{{ link_to_route('permissions.create', 'Add Permission', null, ['class'=>'btn btn-primary btn-sm pull-right']) }}</a>
+            </div>
+        </div>
     </div>
 
-    <a href="{{ URL::to('permissions/create') }}" class="btn btn-success">Add Permission</a>
+    <table class="table category-table" data-toggle="dataTable" data-form="deleteForm">
+        <thead>
+            <tr>
+                <th>Permissions</th>
+                <th>Operation</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($permissions as $permission)
+            <tr>
+                <td>{{ $permission->name }}</td> 
+                <td>
+                    {!! Form::model($permission, ['method' => 'DELETE', 'route' => ['permissions.destroy', $permission->id], 'class' =>'pull-left form-delete']) !!}
+                    {!! Form::hidden('id', $permission->id) !!}
+                    {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs'] )  !!}
+                    {!! Form::close() !!}
 
+                    &nbsp;
+                    <a href="{{ route('permissions.edit',['id' => $permission->id]) }}">
+                        <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                    </a>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
-
 @endsection

@@ -39,7 +39,9 @@ class PermissionController extends Controller
     {
         $roles = Role::get();
 
-        return view('permissions.create')->with('roles', $roles);
+        return view('permissions.create')
+        ->with('roles', $roles)
+        ->with('page_title', 'Create Permission');
     }
 
     /**
@@ -73,8 +75,8 @@ class PermissionController extends Controller
         }
 
         return redirect()->route('permissions.index')
-            ->with('flash_message',
-             'Permission'. $permission->name.' added!');
+            ->with('flash_message','Permission'. $permission->name.' added!')
+            ->with('page_title', 'Permissions');
     }
 
     /**
@@ -98,7 +100,8 @@ class PermissionController extends Controller
     {
         $permission = Permission::find($id);
         
-        return view('permissions.edit', compact('permission'));
+        return view('permissions.edit', compact('permission'))
+        ->with('page_title', 'Edit Permission');;
     }
 
     /**
@@ -120,8 +123,8 @@ class PermissionController extends Controller
         $permission->fill($input)->save();
 
         return redirect()->route('permissions.index')
-            ->with('flash_message',
-             'Permission'. $permission->name.' updated!');
+            ->with('flash_message','Permission'. $permission->name.' updated!')
+            ->with('page_title', 'Permissions');;
     }
 
     /**
@@ -143,7 +146,7 @@ class PermissionController extends Controller
         $permission->delete();
 
         return redirect()->route('permissions.index')
-            ->with('flash_message',
-             'Permission deleted!');
+            ->with('flash_message','Permission deleted!')
+            ->with('page_title', 'Permissions');
     }
 }

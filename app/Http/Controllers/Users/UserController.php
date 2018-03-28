@@ -39,7 +39,7 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::get();
-        return view('users.create', ['roles'=>$roles])->with('page_title', 'Create User');;
+        return view('users.create', ['roles'=>$roles])->with('page_title', 'Create User');
     }
 
     /**
@@ -69,8 +69,8 @@ class UserController extends Controller
         }        
 
         return redirect()->route('users.index')
-            ->with('flash_message',
-             'User successfully added.');
+            ->with('flash_message','User successfully added.')
+            ->with('page_title', 'Users');
     }
 
     /**
@@ -95,7 +95,8 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $roles = Role::get();
 
-        return view('users.edit', compact('user', 'roles'))->with('page_title', 'Edit User');;
+        return view('users.edit', compact('user', 'roles'))
+        ->with('page_title', 'Edit ' . $user->name);
     }
 
     /**
@@ -125,8 +126,8 @@ class UserController extends Controller
             $user->roles()->detach();
         }
         return redirect()->route('users.index')
-            ->with('flash_message',
-             'User successfully edited.');
+            ->with('flash_message','User successfully edited.')
+            ->with('page_title', 'Users');
     }
 
     /**

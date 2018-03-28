@@ -24,9 +24,12 @@
 
       <li class="header">Administrator</li>
       <!-- Optionally, you can add icons to the links -->
-      <li class="{{ Request::is('users')? "active":""}}"><a href="users"><i class="fa fa-dashboard"></i> <span>Users</span></a></li>
-      <li class="{{ Request::is('roles')? "active":""}}"><a href="roles"><i class="fa fa-dashboard"></i> <span>Roles</span></a></li>
-      <li class="{{ Request::is('permissions')? "active":""}}"><a href="permissions"><i class="fa fa-dashboard"></i> <span>Permissions</span></a></li>     
+      <li class="{{ Request::is('users')? "active":""}}"><a href="{{ route('users.index') }}"><i class="fa fa-dashboard"></i> <span>Users</span></a></li>
+
+      <li class="{{ Request::is('roles')? "active":""}}"><a href="{{ route('roles.index') }}"><i class="fa fa-dashboard"></i> <span>Roles</span></a></li>
+
+      <li class="{{ Request::is('permissions')? "active":""}}"><a href="{{ route('permissions.index') }}"><i class="fa fa-dashboard"></i> <span>Permissions</span></a></li> 
+
       <li class="header">REPORTS</li>
       <li class="treeview">
         <a href="#"><i class="fa fa-edit"></i> <span>Access To</span>
