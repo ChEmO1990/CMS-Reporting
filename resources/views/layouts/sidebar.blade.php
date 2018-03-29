@@ -22,6 +22,7 @@
       <!-- Optionally, you can add icons to the links -->
       <li class="{{ Request::is('/')? "active":""}}"><a href="/"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
 
+      @role('Administrator')
       <li class="header">Administrator</li>
       <!-- Optionally, you can add icons to the links -->
       <li class="{{ Request::is('users')? "active":""}}"><a href="{{ route('users.index') }}"><i class="fa fa-dashboard"></i> <span>Users</span></a></li>
@@ -29,7 +30,8 @@
       <li class="{{ Request::is('roles')? "active":""}}"><a href="{{ route('roles.index') }}"><i class="fa fa-dashboard"></i> <span>Roles</span></a></li>
 
       <li class="{{ Request::is('permissions')? "active":""}}"><a href="{{ route('permissions.index') }}"><i class="fa fa-dashboard"></i> <span>Permissions</span></a></li> 
-
+      @endrole
+      
       <li class="header">REPORTS</li>
       <li class="treeview">
         <a href="#"><i class="fa fa-edit"></i> <span>Access To</span>
@@ -38,7 +40,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="{{ Request::is('posts')? "active":""}}"><a href="{{ route('posts.create') }}"><i class="fa fa-users"></i> <span>New Hire Form</span></a></li>
+          <!-- <li class="{{ Request::is('posts')? "active":""}}"><a href="{{ route('posts.create') }}"><i class="fa fa-users"></i> <span>New Hire Form</span></a></li> -->
         </ul>
       </li>
     </ul>
