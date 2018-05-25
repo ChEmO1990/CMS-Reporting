@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Posts;
 
 use Auth;
 use Session;
-use App\Post;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 

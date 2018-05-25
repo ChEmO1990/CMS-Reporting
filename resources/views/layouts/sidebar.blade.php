@@ -30,6 +30,8 @@
       <li class="{{ Request::is('roles')? "active":""}}"><a href="{{ route('roles.index') }}"><i class="fa fa-dashboard"></i> <span>Roles</span></a></li>
 
       <li class="{{ Request::is('permissions')? "active":""}}"><a href="{{ route('permissions.index') }}"><i class="fa fa-dashboard"></i> <span>Permissions</span></a></li> 
+
+      <li class="{{ Request::is('reports')? "active":""}}"><a href="{{ route('reports.index') }}"><i class="fa fa-dashboard"></i> <span>Reports</span></a></li> 
       @endrole
       
       <li class="header">REPORTS</li>

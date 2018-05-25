@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Users;
 
 use Auth;
 use Session;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
@@ -120,11 +120,15 @@ class UserController extends Controller
         $user->fill($input)->save();
 
         if (isset($roles)) {        
-            $user->roles()->sync($roles);            
+            $user->roles()->sync($roles); 
+
+            //Create access_report item
+                       
         }        
         else {
             $user->roles()->detach();
         }
+
         return redirect()->route('users.index')
             ->with('flash_message','User successfully edited.')
             ->with('page_title', 'Users');
