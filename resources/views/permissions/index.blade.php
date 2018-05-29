@@ -15,7 +15,7 @@
         <thead>
             <tr>
                 <th>Permissions</th>
-                <th>Operation</th>
+                <th>Operations</th>
             </tr>
         </thead>
         <tbody>

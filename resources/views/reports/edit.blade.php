@@ -36,12 +36,11 @@
       <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
     </div>
 
-    <h5><b>Roles</b></h5>
-
+    <h5><b>More Roles</b></h5>
     <div class='form-group'>
       @foreach ($roles as $role)
-        {{ Form::checkbox('roles[]', $role->id) }}
-        {{ Form::label($role->name, ucfirst($role->name)) }} <br>
+      {{ Form::checkbox('roles[]',$role->id, $selected ) }}
+      {{ Form::label($role->name, ucfirst($role->name)) }}<br>
       @endforeach
     </div>
 

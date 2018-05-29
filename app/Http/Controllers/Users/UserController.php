@@ -120,10 +120,7 @@ class UserController extends Controller
         $user->fill($input)->save();
 
         if (isset($roles)) {        
-            $user->roles()->sync($roles); 
-
-            //Create access_report item
-                       
+            $user->roles()->sync($roles);        
         }        
         else {
             $user->roles()->detach();

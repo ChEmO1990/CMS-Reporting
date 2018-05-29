@@ -33,18 +33,6 @@
 
       <li class="{{ Request::is('reports')? "active":""}}"><a href="{{ route('reports.index') }}"><i class="fa fa-dashboard"></i> <span>Reports</span></a></li> 
       @endrole
-      
-      <li class="header">REPORTS</li>
-      <li class="treeview">
-        <a href="#"><i class="fa fa-edit"></i> <span>Access To</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <!-- <li class="{{ Request::is('posts')? "active":""}}"><a href="{{ route('posts.create') }}"><i class="fa fa-users"></i> <span>New Hire Form</span></a></li> -->
-        </ul>
-      </li>
     </ul>
     <!-- /.sidebar-menu -->
   </section>

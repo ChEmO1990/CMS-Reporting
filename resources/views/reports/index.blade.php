@@ -5,7 +5,7 @@
 <div class="box box-primary">
     <div class="box-body">
         <div class="box-body">
-            <div div class="col-xs-12>
+            <div div class="col-xs-12">
                 <a href="url">{{ link_to_route('reports.create', 'Add Report', null, ['class'=>'btn btn-primary btn-sm pull-right']) }}</a>
             </div>
         </div>
@@ -17,7 +17,7 @@
                 <th>Report Name</th>
                 <th>Report URL</th>
                 <th>Departament</th>
-                <th>Operation</th>
+                <th>Operations</th>
             </tr>
         </thead>
 

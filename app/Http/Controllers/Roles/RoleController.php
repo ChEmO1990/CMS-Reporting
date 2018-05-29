@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Roles;
 
 use Auth;
 use Session;
+use App\Models\AccessReport;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
@@ -144,6 +145,8 @@ class RoleController extends Controller
     {
         $role = Role::findOrFail($id);
         $role->delete();
+        
+        AccessReport::where('role_id', $id)->delete();
 
         return redirect()->route('roles.index')
             ->with('flash_message','Role deleted!')

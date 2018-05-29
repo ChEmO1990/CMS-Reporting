@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Reports;
 
+use Auth;
+use Session;
 use App\Models\Report;
 use App\Models\AccessReport;
 use Illuminate\Http\Request;
@@ -101,7 +103,14 @@ class ReportController extends Controller
         $report = Report::findOrFail($report_id);
         $roles = Role::get();
         $granted = AccessReport::where('report_id', $report_id)->get();
-        return view('reports.edit', compact('report', 'roles', 'granted'))->with('page_title', 'Edit Report');
+
+        $ids = array();
+        foreach ($granted as $grant) {
+            array_push($ids, $grant->role_id);
+        }
+
+        $selected = Role::whereIn('id', $ids)->get();
+        return view('reports.edit', compact('report', 'roles', 'selected'))->with('page_title', 'Edit Report');
     }
 
     /**

@@ -18,7 +18,7 @@
             <tr>
                 <th>Role</th>
                 <th>Permissions</th>
-                <th>Operation</th>
+                <th>Operations</th>
             </tr>
         </thead>
         
