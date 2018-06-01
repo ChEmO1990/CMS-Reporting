@@ -25,13 +25,12 @@
       @role('Administrator')
       <li class="header">Administrator</li>
       <!-- Optionally, you can add icons to the links -->
-      <li class="{{ Request::is('users')? "active":""}}"><a href="{{ route('users.index') }}"><i class="fa fa-dashboard"></i> <span>Users</span></a></li>
+      <li class="{{ Request::is('users')? "active":""}}"><a href="{{ route('users.index') }}"><i class="fa fa-users"></i> <span>Users</span></a></li>
 
-      <li class="{{ Request::is('roles')? "active":""}}"><a href="{{ route('roles.index') }}"><i class="fa fa-dashboard"></i> <span>Roles</span></a></li>
+      <li class="{{ Request::is('roles')? "active":""}}"><a href="{{ route('roles.index') }}"><i class="fa fa-drivers-license-o"></i> <span>Roles</span></a></li>
 
-      <li class="{{ Request::is('permissions')? "active":""}}"><a href="{{ route('permissions.index') }}"><i class="fa fa-dashboard"></i> <span>Permissions</span></a></li> 
-
-      <li class="{{ Request::is('reports')? "active":""}}"><a href="{{ route('reports.index') }}"><i class="fa fa-dashboard"></i> <span>Reports</span></a></li> 
+      <li class="{{ Request::is('permissions')? "active":""}}"><a href="{{ route('permissions.index') }}"><i class="fa fa-eye"></i> <span>Permissions</span></a></li> 
+      <li class="{{ Request::is('reports')? "active":""}}"><a href="{{ route('reports.index') }}"><i class="fa fa-file-pdf-o"></i> <span>Reports</span></a></li> 
       @endrole
     </ul>
     <!-- /.sidebar-menu -->

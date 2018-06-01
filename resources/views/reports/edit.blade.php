@@ -36,16 +36,21 @@
       <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
     </div>
 
-    <h5><b>More Roles</b></h5>
-    <div class='form-group'>
-      @foreach ($roles as $role)
-      {{ Form::checkbox('roles[]',$role->id, $selected ) }}
-      {{ Form::label($role->name, ucfirst($role->name)) }}<br>
-      @endforeach
-    </div>
+    <h5><b>Roles</b></h5>
+      <div class='form-group'>
+        @foreach ($roles_not_selected as $not_selected_role)
+          {{ Form::checkbox('roles[]', $not_selected_role->id) }}
+          {{ Form::label($not_selected_role->name, ucfirst($not_selected_role->name)) }}<br>
+        @endforeach
 
-    {{ Form::submit('Edit', array('class' => 'btn btn-primary pull-right')) }}
-    {{ Form::close() }}
+        @foreach ($db_roles as $db_role)
+          {{ Form::checkbox('roles[]', $db_role->id, true) }}
+          {{ Form::label($db_role->name, ucfirst($db_role->name)) }}<br>
+        @endforeach
+      </div>
+
+      {{ Form::submit('Edit', array('class' => 'btn btn-primary pull-right')) }}
+      {{ Form::close() }}
   </div>
 </div>
 </div>

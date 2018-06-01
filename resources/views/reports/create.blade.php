@@ -21,17 +21,17 @@
 
             <div class="form-group has-feedback">
                 <input name="report_name" type="text" class="form-control" placeholder="Report Name" value="{{ old('report_name') }}">
-                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                <span class="glyphicon glyphicon-file form-control-feedback"></span>
             </div>
 
             <div class="form-group has-feedback">
                 <input name="report_url" type="text" class="form-control" placeholder="Report URL" value="{{ old('report_url') }}">
-                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <span class="glyphicon glyphicon-globe form-control-feedback"></span>
             </div>
 
             <div class="form-group has-feedback">
                 <input name="departament" type="text" class="form-control" placeholder="Departament" value="{{ old('departament') }}">
-                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <span class="glyphicon glyphicon-folder-open form-control-feedback"></span>
             </div>
 
             <h5><b>Roles</b></h5>

@@ -101,16 +101,24 @@ class ReportController extends Controller
     public function edit($report_id)
     {
         $report = Report::findOrFail($report_id);
-        $roles = Role::get();
-        $granted = AccessReport::where('report_id', $report_id)->get();
+        $current_roles = AccessReport::where('report_id', $report_id)->get();
 
         $ids = array();
-        foreach ($granted as $grant) {
+        foreach ($current_roles as $grant) {
             array_push($ids, $grant->role_id);
         }
 
-        $selected = Role::whereIn('id', $ids)->get();
-        return view('reports.edit', compact('report', 'roles', 'selected'))->with('page_title', 'Edit Report');
+        $db_roles = Role::whereIn('id', $ids)->get()->all();
+
+        $db_roles_ids = array();
+        
+        foreach ($db_roles as $db_rol) {
+            array_push($db_roles_ids, $db_rol->id);
+        }
+
+        $roles_not_selected = Role::whereNotIn('id', $db_roles_ids)->get()->all();
+
+        return view('reports.edit', compact('report', 'db_roles', 'roles_not_selected'))->with('page_title', 'Edit Report');
     }
 
     /**
@@ -137,15 +145,17 @@ class ReportController extends Controller
         //Get roles selected
         $roles = $request['roles'];
 
+        //Get current roles from data base
+        $current_roles = AccessReport::where('report_id', $report_id)->get();
+
         if(!empty($roles)) {
             foreach ($roles as $rol) {
-                $access_report = new AccessReport();
-                $access_report->role_id = $rol;
-                $access_report->report_id = $report->report_id;
-                $access_report->save();
+                AccessReport::firstOrCreate(['role_id' => $rol, 'report_id' => $report->report_id]);
             }
+            AccessReport::where('report_id', $report_id)->whereNotIn('role_id', $roles)->delete();
+        } else {
+            AccessReport::where('report_id', $report_id)->delete();
         }
-
         return redirect()->route('reports.show', $report->report_id)->with('flash_message', 'Report, '. $report->report_name.' updated');
     }
 
