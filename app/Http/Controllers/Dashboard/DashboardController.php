@@ -31,17 +31,24 @@ class DashboardController extends Controller
         $user_roles =  Auth::user()->roles()->get();
         $role_ids = array();
         $report_ids = array();
+        $rol_names = array();
+
         foreach ($user_roles as $rol) {
             array_push($role_ids, $rol->id);
+            array_push($rol_names, $rol->name);
         }
 
         $result = AccessReport::whereIn('role_id', $role_ids)->get();
+        
         foreach ($result as $res) {
             array_push($report_ids, $res->report_id);
         }
 
         $reports = Report::whereIn('report_id', $report_ids)->get();
+        $count_roles = $user_roles->count();
+        $reports_count = $result->count();
+        $roles = implode(" , ", $rol_names);
 
-        return view('dashboard.index', compact('reports'))->with('page_title', 'My Reports');
+        return view('dashboard.index', compact('reports_count', 'count_roles', 'roles'))->with('page_title', 'Dashboard');
     }
 }

@@ -24,10 +24,10 @@ class ReportController extends Controller
      */
     public function index()
     {
-        $reports = Report::orderby('report_id', 'report_name')->paginate(5);
+        $reports = Report::orderby('report_id', 'report_name')->paginate(20);
         return view('reports.index', compact('reports'))->with('page_title', 'Reports');
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -91,7 +91,7 @@ class ReportController extends Controller
     {
         return redirect('reports');
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *

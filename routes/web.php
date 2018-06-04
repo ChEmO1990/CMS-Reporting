@@ -15,5 +15,6 @@ Auth::routes();
 Route::resource('/', 'Dashboard\DashboardController');
 Route::resource('users', 'Users\UserController');
 Route::resource('reports', 'Reports\ReportController');
+Route::resource('access', 'Access\AccessController');
 Route::resource('roles', 'Roles\RoleController');
 Route::resource('permissions', 'Permissions\PermissionController');
