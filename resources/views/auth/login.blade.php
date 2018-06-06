@@ -73,7 +73,7 @@
             <div class="checkbox icheck">
               <label>
                 <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-              </label>`
+              </label>
             </div>
           </div>
           <!-- /.col -->
