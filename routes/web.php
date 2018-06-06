@@ -17,3 +17,4 @@ Route::resource('users', 'Users\UserController');
 Route::resource('reports', 'Reports\ReportController');
 Route::resource('roles', 'Roles\RoleController');
 Route::resource('permissions', 'Permissions\PermissionController');
+Route::resource('departaments', 'Departaments\DepartamentController');

@@ -34,8 +34,20 @@
                 <span class="glyphicon glyphicon-folder-open form-control-feedback"></span>
             </div>
 
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="width: 100%;">
+                    Dropdown
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="width: 100%;">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                </ul>
+            </div>
+
             <h5><b>Roles</b></h5>
-            
+
             <div class='form-group'>
                 @foreach ($roles as $role)
                 {{ Form::checkbox('roles[]',$role->id) }}

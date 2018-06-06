@@ -21,8 +21,6 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
-
     public function index()
     {
         $posts = Post::orderby('id', 'desc')->paginate(5);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Reports;
 use Auth;
 use Session;
 use App\Models\Report;
+use App\Models\Departament;
 use App\Models\AccessReport;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
@@ -37,10 +38,12 @@ class ReportController extends Controller
     {
         $reports = Report::get();
         $roles = Role::get();
+        $departaments = Departament::all();
 
         return view('reports.create')
         ->with('reports', $reports)
         ->with('roles', $roles)
+        ->with('departaments', $departaments)
         ->with('page_title', 'Create Report');
     }
 
