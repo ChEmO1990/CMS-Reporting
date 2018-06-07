@@ -14,7 +14,6 @@
     <table class="table category-table" data-toggle="dataTable" data-form="deleteForm">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Departament Name</th>
                 <th>Description</th>
                 <th>Operations</th>
@@ -24,7 +23,6 @@
         <tbody>
             @foreach ($departaments as $departament)
             <tr>
-                <td>{{ $departament->id }}</td>
                 <td>{{ $departament->name }}</td>
                 <td>{{ $departament->description }}</td>
 

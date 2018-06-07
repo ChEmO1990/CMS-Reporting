@@ -28,7 +28,7 @@
 
                 <td>{{ $role->name }}</td>
 
-                <td>{{  $role->permissions()->pluck('name')->implode(' ') }}</td>{{-- Retrieve array of permissions associated to a role and convert to string --}}
+                <td>{{  '[ ' . $role->permissions()->pluck('name')->implode(' , ') . ' ]' }}</td>
                 <td>
                     {!! Form::model($role, ['method' => 'DELETE', 'route' => ['roles.destroy', $role->id], 'class' =>'pull-left form-delete']) !!}
                     {!! Form::hidden('id', $role->id) !!}
