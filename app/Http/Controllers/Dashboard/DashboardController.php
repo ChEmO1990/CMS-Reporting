@@ -31,9 +31,8 @@ class DashboardController extends Controller
         $user_roles =  Auth::user()->roles()->get();
         $role_ids = array();
         $report_ids = array();
-
         $rol_names = array();
-
+        
         foreach ($user_roles as $rol) {
             array_push($role_ids, $rol->id);
             array_push($rol_names, $rol->name);
