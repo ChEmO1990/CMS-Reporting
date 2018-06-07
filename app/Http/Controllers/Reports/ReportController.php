@@ -38,7 +38,8 @@ class ReportController extends Controller
     {
         $reports = Report::get();
         $roles = Role::get();
-        $departaments = Departament::all();
+        $collection = Departament::all();
+        $departaments = $collection->pluck('name');
 
         return view('reports.create')
         ->with('reports', $reports)
@@ -58,14 +59,26 @@ class ReportController extends Controller
         $this->validate($request, [
         	'report_name'=>'required',
             'report_url' =>'required',
-            'departament' =>'required',
+            'selected' =>'required',
         ]);
 
         $report_name = $request['report_name'];
         $report_url = $request['report_url'];
-        $departament = $request['departament'];
 
-        $report = Report::create($request->only('report_name', 'report_url', 'departament'));
+        //Get the element index selected
+        $index_selected = $request['selected'];
+
+        //Get all items from departament table
+        $items = Departament::all();
+
+        //Get only one item collection from index selected
+        $item_selected = $items->values()->get($index_selected)->name;
+
+        $report = new Report();
+        $report->report_name = $report_name;
+        $report->report_url = $report_url;
+        $report->departament = $item_selected;
+        $report->save();
 
         //Get roles selected
         $roles = $request['roles'];
@@ -121,7 +134,10 @@ class ReportController extends Controller
 
         $roles_not_selected = Role::whereNotIn('id', $db_roles_ids)->get()->all();
 
-        return view('reports.edit', compact('report', 'db_roles', 'roles_not_selected'))->with('page_title', 'Edit Report');
+        $collection = Departament::all();
+        $departaments = $collection->pluck('name');
+
+        return view('reports.edit', compact('report', 'db_roles', 'roles_not_selected', 'departaments'))->with('page_title', 'Edit Report');
     }
 
     /**
@@ -136,13 +152,22 @@ class ReportController extends Controller
         $this->validate($request, [
         	'report_name'=>'required',
             'report_url' =>'required',
-            'departament' =>'required',
+            'selected' =>'required',
         ]);
+
+        //Get the element index selected
+        $index_selected = $request['selected'];
+
+        //Get all items from departament table
+        $items = Departament::all();
+
+        //Get only one item collection from index selected
+        $item_selected = $items->values()->get($index_selected)->name;
 
         $report = Report::findOrFail($report_id);
         $report->report_name = $request->input('report_name');
         $report->report_url = $request->input('report_url');
-        $report->departament = $request->input('departament');
+        $report->departament = $item_selected;
         $report->save();
 
         //Get roles selected

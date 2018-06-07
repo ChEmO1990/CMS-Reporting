@@ -29,21 +29,9 @@
                 <span class="glyphicon glyphicon-globe form-control-feedback"></span>
             </div>
 
-            <div class="form-group has-feedback">
-                <input name="departament" type="text" class="form-control" placeholder="Departament" value="{{ old('departament') }}">
-                <span class="glyphicon glyphicon-folder-open form-control-feedback"></span>
-            </div>
-
-            <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="width: 100%;">
-                    Dropdown
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="width: 100%;">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                </ul>
+            <div class='form-group'>
+                {!! Form::label('lbl_selected', 'Select a departament') !!}
+                {{ Form::select('selected', $departaments, null, ['class'=>'form-control']) }}
             </div>
 
             <h5><b>Roles</b></h5>

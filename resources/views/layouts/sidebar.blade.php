@@ -30,15 +30,9 @@
 
       <li class="{{ Request::is('roles')? "active":""}}"><a href="{{ route('roles.index') }}"><i class="fa fa-drivers-license-o"></i> <span>Roles</span></a></li>
 
-<<<<<<< HEAD
       <li class="{{ Request::is('permissions')? "active":""}}"><a href="{{ route('permissions.index') }}"><i class="fa fa-eye"></i> <span>Permissions</span></a></li> 
 
-      <li class="{{ Request::is('reports')? "active":""}}"><a href="{{ route('reports.index') }}"><i class="fa fa-file-pdf-o"></i> <span>Reports</span></a></li> 
-
       <li class="{{ Request::is('departaments')? "active":""}}"><a href="{{ route('departaments.index') }}"><i class="fa fa-tasks"></i> <span>Departaments</span></a></li> 
-=======
-      <li class="{{ Request::is('permissions')? "active":""}}"><a href="{{ route('permissions.index') }}"><i class="fa fa-eye"></i> <span>Permissions</span></a></li>
->>>>>>> 9e332f481405076f474e3955855cce8468fe1b42
       @endrole
 
       <?php $roles = Auth::user()->roles; ?>

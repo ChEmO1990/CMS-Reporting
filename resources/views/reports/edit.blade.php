@@ -31,26 +31,26 @@
       <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
     </div>
 
-    <div class="form-group has-feedback">
-      <input name="departament" type="text" class="form-control" placeholder="Departament" value="{{ $report->departament }}">
-      <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+    <div class='form-group'>
+      {!! Form::label('lbl_selected', 'Select a departament') !!}
+      {{ Form::select('selected', $departaments, null, ['class'=>'form-control']) }}
     </div>
 
     <h5><b>Roles</b></h5>
-      <div class='form-group'>
-        @foreach ($roles_not_selected as $not_selected_role)
-          {{ Form::checkbox('roles[]', $not_selected_role->id) }}
-          {{ Form::label($not_selected_role->name, ucfirst($not_selected_role->name)) }}<br>
-        @endforeach
+    <div class='form-group'>
+      @foreach ($roles_not_selected as $not_selected_role)
+      {{ Form::checkbox('roles[]', $not_selected_role->id) }}
+      {{ Form::label($not_selected_role->name, ucfirst($not_selected_role->name)) }}<br>
+      @endforeach
 
-        @foreach ($db_roles as $db_role)
-          {{ Form::checkbox('roles[]', $db_role->id, true) }}
-          {{ Form::label($db_role->name, ucfirst($db_role->name)) }}<br>
-        @endforeach
-      </div>
+      @foreach ($db_roles as $db_role)
+      {{ Form::checkbox('roles[]', $db_role->id, true) }}
+      {{ Form::label($db_role->name, ucfirst($db_role->name)) }}<br>
+      @endforeach
+    </div>
 
-      {{ Form::submit('Edit', array('class' => 'btn btn-primary pull-right')) }}
-      {{ Form::close() }}
+    {{ Form::submit('Edit', array('class' => 'btn btn-primary pull-right')) }}
+    {{ Form::close() }}
   </div>
 </div>
 </div>
