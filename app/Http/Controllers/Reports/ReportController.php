@@ -198,6 +198,8 @@ class ReportController extends Controller
         $report = Report::findOrFail($report_id);
         $report->delete();
 
+        AccessReport::where('report_id', $report_id)->delete();
+
         return redirect()->route('reports.index')
             ->with('flash_message',
              'Report successfully deleted');
