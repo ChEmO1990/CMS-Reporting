@@ -16,8 +16,8 @@
             <tr>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Date/Time Added</th>
                 <th>User Roles</th>
+                <th>Date/Time Added</th>
                 <th>Operations</th>
             </tr>
         </thead>
@@ -27,8 +27,8 @@
             <tr>
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
-                <td>{{ $user->created_at->format('F d, Y h:ia') }}</td>
                 <td>{{ '[ ' . $user->roles()->pluck('name')->implode(' , ') . ' ]' }}</td>
+                <td>{{ $user->created_at->format('F d, Y h:ia') }}</td>
 
                 <td>
                     {!! Form::model($user, ['method' => 'DELETE', 'route' => ['users.destroy', $user->id], 'class' =>'pull-left form-delete']) !!}

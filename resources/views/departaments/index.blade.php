@@ -16,6 +16,7 @@
             <tr>
                 <th>Departament Name</th>
                 <th>Description</th>
+                <th>Date/Time Added</th>
                 <th>Operations</th>
             </tr>
         </thead>
@@ -25,7 +26,7 @@
             <tr>
                 <td>{{ $departament->name }}</td>
                 <td>{{ $departament->description }}</td>
-
+                <td>{{ $departament->created_at->format('F d, Y h:ia') }}</td>
                 <td>
                     {!! Form::model($departament, ['method' => 'DELETE', 'route' => ['departaments.destroy', $departament->id], 'class' =>'pull-left form-delete']) !!}
                     {!! Form::hidden('id', $departament->id) !!}

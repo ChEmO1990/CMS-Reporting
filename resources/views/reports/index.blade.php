@@ -17,6 +17,7 @@
                 <th>Report Name</th>
                 <th>Report URL</th>
                 <th>Departament</th>
+                <th>Date/Time Added</th>
                 <th>Operations</th>
             </tr>
         </thead>
@@ -27,6 +28,7 @@
                 <td>{{ $report->report_name }}</td>
                 <td>{{ $report->report_url }}</td>
                 <td>{{ $report->departament }}</td>
+                <td>{{ $report->created_at->format('F d, Y h:ia') }}</td>
 
                 <td>
                     {!! Form::model($report, ['method' => 'DELETE', 'route' => ['reports.destroy', $report->report_id], 'class' =>'pull-left form-delete']) !!}

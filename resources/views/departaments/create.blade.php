@@ -21,13 +21,13 @@
             {!! Form::open(array('url' => 'departaments')) !!}
 
             <div class="form-group has-feedback">
-              <input name="name" type="text" class="form-control" placeholder="Departament Name" value="{{ old('name') }}">
-              <span class="glyphicon glyphicon-departament form-control-feedback"></span>
+              <input name="name" type="text" class="form-control" placeholder="Name" value="{{ old('name') }}">
+              <span class="glyphicon glyphicon-file form-control-feedback"></span>
             </div>
 
             <div class="form-group has-feedback">
               <input name="description" type="text" class="form-control" placeholder="Description" value="{{ old('description') }}">
-              <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+              <span class="glyphicon glyphicon-file form-control-feedback"></span>
            </div>
            
           {!! Form::submit('Create', array('class' => 'btn btn-primary pull-right')) !!}

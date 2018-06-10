@@ -18,6 +18,7 @@
             <tr>
                 <th>Role</th>
                 <th>Permissions</th>
+                <th>Date/Time Added</th>
                 <th>Operations</th>
             </tr>
         </thead>
@@ -27,8 +28,8 @@
             <tr>
 
                 <td>{{ $role->name }}</td>
-
                 <td>{{  '[ ' . $role->permissions()->pluck('name')->implode(' , ') . ' ]' }}</td>
+                <td>{{ $role->created_at->format('F d, Y h:ia') }}</td>
                 <td>
                     {!! Form::model($role, ['method' => 'DELETE', 'route' => ['roles.destroy', $role->id], 'class' =>'pull-left form-delete']) !!}
                     {!! Form::hidden('id', $role->id) !!}

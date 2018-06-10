@@ -15,6 +15,7 @@
         <thead>
             <tr>
                 <th>Permissions</th>
+                <th>Date/Time Added</th>
                 <th>Operations</th>
             </tr>
         </thead>
@@ -22,6 +23,7 @@
             @foreach ($permissions as $permission)
             <tr>
                 <td>{{ $permission->name }}</td> 
+                <td>{{ $permission->created_at->format('F d, Y h:ia') }}</td>
                 <td>
                     {!! Form::model($permission, ['method' => 'DELETE', 'route' => ['permissions.destroy', $permission->id], 'class' =>'pull-left form-delete']) !!}
                     {!! Form::hidden('id', $permission->id) !!}

@@ -25,7 +25,7 @@ class ReportController extends Controller
      */
     public function index()
     {
-        $reports = Report::orderby('report_id', 'report_name')->paginate(20);
+        $reports = Report::paginate(20);
         return view('reports.index', compact('reports'))->with('page_title', 'Reports');
     }
     

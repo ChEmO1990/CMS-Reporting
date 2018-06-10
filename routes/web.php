@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Report;
 use App\Models\AccessReport;
 
 /*
@@ -22,26 +21,3 @@ Route::resource('access', 'Access\AccessController');
 Route::resource('roles', 'Roles\RoleController');
 Route::resource('permissions', 'Permissions\PermissionController');
 Route::resource('departaments', 'Departaments\DepartamentController');
-
-
-Route::get('foo', function () {
-	$ids = AccessReport::where('role_id', 161)->pluck('report_id');
-
-	$items = Report::whereIn('report_id', $ids)->get() //Get collection
-	->sort() //Sort the result
-	->all();
-
-	$single_titles = Report::whereIn('report_id', $ids)->get() //Get collection
-	->pluck('departament') //I only need the departament column
-	->unique() //Remove duplicate items
-	->sort() //Sort the result
-	->all();
-
-
-		$result = Report::where('report_id', $items[1]->report_id)
-		->where('departament', 'Human Resources')
-		->get();
-
-		var_dump($result);
-	
-});

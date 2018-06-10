@@ -14,7 +14,7 @@ class AccessController extends Controller
     
     public function __construct()
     {
-        $this->middleware(['auth', 'clearance']);
+        $this->middleware(['auth', 'access']);
     }
 
     /**
@@ -56,21 +56,8 @@ class AccessController extends Controller
      */
     public function show($id)
     {
-        //Get role name
-        $role_name = Role::where('id', $id)->get()->first()->name;
-
-        //Get ids reports from AccessReport table
-        $result = AccessReport::where('role_id', $id)->get();
-
-        $report_ids = array();
-
-        foreach ($result as $res) {
-            array_push($report_ids, $res->report_id);
-        }
-
-        $reports = Report::whereIn('report_id', $report_ids)->get();
-
-        return view('access.show', compact('reports'))->with('page_title', $role_name);
+        $report = Report::findOrFail($id);
+        return view('access.show', compact('report'))->with('page_title', $report->report_name);
     }
 
     /**

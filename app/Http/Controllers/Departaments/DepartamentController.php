@@ -19,7 +19,7 @@ class DepartamentController extends Controller
      */
     public function index()
     {
-        $departaments = Departament::orderby('id', 'name')->paginate(20);
+        $departaments = Departament::paginate(20);
         return view('departaments.index', compact('departaments'))->with('page_title', 'Departaments');
     }
 
